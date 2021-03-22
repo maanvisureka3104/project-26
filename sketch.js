@@ -63,17 +63,17 @@ function setup() {
 
 
 	Engine.run(engine);
-  
+  console.log(packageBody);
 }
 
 
 function draw() {
   rectMode(CENTER);
   background(0);
-  keyPressed();
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y 
  
+  
   
   
   drawSprites();
@@ -85,10 +85,15 @@ function keyPressed() {
 	if (keyCode === DOWN_ARROW) {
 	   Matter.Body.setStatic(packageBody, false);
 	 }
-	 if(keyDown=RIGHT_ARROW){
-	  helicopterSprite.x=helicopterSprite.x+2;
+	 if(keyCode===RIGHT_ARROW){
+		 
+	  helicopterSprite.x=helicopterSprite.x+8;
+	  translation={x:8,y:0}
+	  Matter.Body.translate(packageBody,translation)
      }
-     if(keyDown=LEFT_ARROW){
-	  helicopterSprite.x=helicopterSprite.x-2;
+     if(keyCode===LEFT_ARROW){
+	  helicopterSprite.x=helicopterSprite.x-8;
+	  translation={x:-8,y:0}
+	  Matter.Body.translate(packageBody,translation)
   }
    }
